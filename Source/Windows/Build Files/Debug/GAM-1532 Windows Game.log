@@ -1,0 +1,90 @@
+﻿Build started 1/22/2013 3:15:53 PM.
+     1>Project "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\Windows Game\GAM-1532 Windows Game.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GAM-1532 Windows Game.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USE_MATH_DEFINES /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\\" /Fd"H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Common\Menus\GameOverMenu.cpp
+         GameOverMenu.cpp
+     1>h:\school\winter 2013\game development 4\gam1532 template game\source\common\opengl\openglcolor.h(67): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>h:\school\winter 2013\game development 4\gam1532 template game\source\common\opengl\openglcolor.h(67): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>h:\school\winter 2013\game development 4\gam1532 template game\source\common\opengl\openglcolor.h(67): warning C4305: 'argument' : truncation from 'double' to 'float'
+     1>h:\school\winter 2013\game development 4\gam1532 template game\source\common\game\game.h(11): warning C4584: 'Game' : base-class 'InputListener' is already a base-class of 'Screen'
+                 h:\school\winter 2013\game development 4\gam1532 template game\source\common\input\inputlistener.h(5) : see declaration of 'InputListener'
+                 h:\school\winter 2013\game development 4\gam1532 template game\source\common\screen manager\screen.h(10) : see declaration of 'Screen'
+         All outputs are up-to-date.
+       ManifestResourceCompile:
+         All outputs are up-to-date.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Application\GAM-1532 Windows Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:..\Dependencies\DevIL\lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GAM-1532 Windows Game.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\Application\GAM-1532 Windows Game.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Application\GAM-1532 Windows Game.lib" /MACHINE:X86 "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GAM-1532 Windows Game.exe.embed.manifest.res"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GameConstants.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\MenuConstants.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\ResourceConstants.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\Ball.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\Game.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GameObject.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\Paddle.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\InputConstants.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\InputListener.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\InputManager.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\png.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngerror.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngget.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngmem.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngpread.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngread.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngrio.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngrtran.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngrutil.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngset.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngtest.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngtrans.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngwio.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngwrite.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngwtran.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\pngwutil.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GameOverMenu.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\Menu.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\PauseMenu.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\OpenGLAnimatedTexture.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\OpenGLRenderer.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\OpenGLTexture.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\OpenGLTextureLoader.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\OpenGLTextureManager.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\Screen.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\ScreenManager.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\Logger.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\MathUtils.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\ResourceUtils.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\adler32.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\compress.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\crc32.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\deflate.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\gzclose.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\gzlib.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\gzread.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\gzwrite.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\infback.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\inffast.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\inflate.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\inftrees.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\trees.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\uncompr.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\zutil.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\Win32Constants.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\Win32Game.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\Main.obj"
+         "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\OpenGLWindow.obj"
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GAM-1532 Windows Game.exe.embed.manifest" /manifest "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GAM-1532 Windows Game.exe.intermediate.manifest"
+         All outputs are up-to-date.
+       LinkEmbedManifest:
+         All outputs are up-to-date.
+         GAM-1532 Windows Game.vcxproj -> H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Application\GAM-1532 Windows Game.exe
+       FinalizeBuildStatus:
+         Deleting file "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GAM-1532 Windows Game.unsuccessfulbuild".
+         Touching "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\\Build Files\Debug\GAM-1532 Windows Game.lastbuildstate".
+     1>Done Building Project "H:\School\Winter 2013\Game Development 4\GAM1532 Template Game\Source\Windows\Windows Game\GAM-1532 Windows Game.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.77
