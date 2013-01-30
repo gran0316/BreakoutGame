@@ -14,8 +14,7 @@
 #include "GameObject.h"
 
 
-//Paddle class, inherits from GameObject, is controlled by the
-//mouse input on the x-axis.
+//Paddle class, inherits from GameObject
 class Brick : public GameObject
 {
 public:
@@ -45,6 +44,9 @@ public:
 protected:
     float m_Width;
     float m_Height;
+    
+    float m_PositionX;
+    float m_PositionY;
 };
 
 

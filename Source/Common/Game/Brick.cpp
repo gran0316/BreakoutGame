@@ -14,7 +14,7 @@
 
 Brick::Brick() : GameObject()
 {
-    
+
 }
 
 Brick::~Brick()
@@ -31,7 +31,7 @@ void Brick::paint()
 {
     //Draw the Red Brick with a white outline
     OpenGLRenderer::getInstance()->setLineWidth(2.0f);
-    OpenGLRenderer::getInstance()->setForegroundColor(OpenGLColorRed());
+    OpenGLRenderer::getInstance()->setForegroundColor(OpenGLColorBlack());
     OpenGLRenderer::getInstance()->drawRectangle(getX(), getY(), getWidth(), getHeight());
     OpenGLRenderer::getInstance()->setForegroundColor(OpenGLColorWhite());
     OpenGLRenderer::getInstance()->drawRectangle(getX(), getY(), getWidth(), getHeight(), false);
@@ -45,12 +45,12 @@ void Brick::reset()
     float screenHeight = ScreenManager::getInstance()->getScreenHeight();
     
     //Reset the Brick's width and height
-    //setWidth(screenWidth * GAME_Brick_WIDTH_PERCENTAGE);
-    //setHeight(screenHeight * GAME_Brick_HEIGHT_PERCENTAGE);
+    setWidth(80.0f);
+    setHeight(30.0f);
     
     //Reset the x and y position
-    setX((screenWidth - getWidth()) / 2.0f);
-    //setY(screenHeight * GAME_Brick_Y_PERCENTAGE);
+    setX(0);
+    setY(0);
     
     //Reset the Brick to active
     setIsActive(true);
@@ -58,7 +58,7 @@ void Brick::reset()
 
 const char* Brick::getType()
 {
-    //return GAME_Brick_TYPE;
+    return GAME_BRICK_TYPE;
 }
 
 void Brick::setSize(float aWidth, float aHeight)

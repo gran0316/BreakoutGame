@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Paddle.h"
 #include "Ball.h"
+#include "Brick.h"
 #include "../OpenGL/OpenGL.h"
 #include "../Constants/Constants.h"
 #include "..//Utils/Utils.h"
@@ -13,7 +14,8 @@ Game::Game()
   //Create a new paddle and ball
   addGameObject(new Paddle());
   addGameObject(new Ball());
-  
+    addGameObject(new Brick());
+    
   reset();
 }
 

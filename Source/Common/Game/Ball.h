@@ -12,6 +12,7 @@
 #include "GameObject.h"
 
 class Paddle;
+class Brick;
 
 
 //Ball class, inherits from the GameObject class, handles 
@@ -57,6 +58,7 @@ public:
 protected:
   //Handle's paddle collision events.
   void handlePaddleCollision(Paddle* paddle);
+  void handleBrickCollision(Brick * brick);
 
   //Ball member variables
   float m_Radius;

@@ -16,4 +16,9 @@ extern const float GAME_PADDLE_HEIGHT_PERCENTAGE;
 extern const float GAME_PADDLE_Y_PERCENTAGE;
 extern const char* GAME_PADDLE_TYPE;
 
+//Brick Constants
+extern const float GAME_BRICK_WIDTH_PERCENTAGE;
+extern const float GAME_BRICK_HEIGHT_PERCENTAGE;
+extern const char* GAME_BRICK_TYPE;
+
 #endif 

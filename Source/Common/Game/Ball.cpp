@@ -9,6 +9,7 @@
 #include "Ball.h"
 #include "Game.h"
 #include "Paddle.h"
+#include "Brick.h"
 #include "../Constants/Constants.h"
 #include "../Screen Manager/ScreenManager.h"
 #include "../OpenGL/OpenGL.h"
@@ -112,6 +113,12 @@ void Ball::checkCollision(GameObject* aGameObject)
     {
       handlePaddleCollision((Paddle*)aGameObject);
     }
+      
+    //Determine if the gameObject is a Brick
+    else if(strcmp(aGameObject->getType(), GAME_BRICK_TYPE) == 0)
+    {
+        handleBrickCollision((Brick*)aGameObject);
+    }
   }
 }
 
@@ -153,6 +160,49 @@ void Ball::handlePaddleCollision(Paddle* aPaddle)
     setDirectionX(getDirectionX() * -1.0f);
     return;
   }
+}
+
+void Ball::handleBrickCollision(Brick * aBrick)
+{
+    //Calculate the ball's distance from the paddle
+    float distanceX = fabsf(getX() - aBrick->getX() - (aBrick->getWidth() / 2.0f));
+    float distanceY = fabsf(getY() - aBrick->getY() - (aBrick->getHeight() / 2.0f));
+    
+    //If the distance on the x-axis is greater than half-the-width of the paddle + the ball's radius, then
+    //there is no way they can be colliding and return out of this method, no more collision handling is needed.
+    if(distanceX > ((aBrick->getWidth() / 2.0f) + getRadius()))
+    {
+        return;
+    }
+    
+    //If the distance on the y-axis is greater than half-the-height of the paddle + the ball's radius, then
+    //there is no way they can be colliding and return out of this method, no more collision handling is needed.
+    if(distanceY > ((aBrick->getHeight() / 2.0f) + getRadius()))
+    {
+        return;
+    }
+    
+    //If we got here (passed the previous 2 if checks), then there is a good chance that a collision has occured.
+    
+    //If the distance on the x-axis is less than half-the-width of the paddle, then we have a collision on top of
+    //the paddle, set the ball's Y value and y-direction accordingly.
+    if(distanceX <= (aBrick->getWidth() / 2.0f))
+    {
+        //setY(aBrick->getY() - getRadius());
+        setDirectionY(getDirectionY() * -1.0f);
+        
+        aBrick->setIsActive(false);
+        
+        return;
+    }
+    
+    //If the distance on the y-axis is less than half-the-height of the paddle, then we have a collision on either
+    //side of the paddle, set the x-direction accordingly.
+    if(distanceY <= (aBrick->getHeight() / 2.0f))
+    {
+        setDirectionX(getDirectionX() * -1.0f);
+        return;
+    }
 }
 
 void Ball::setRadius(float aRadius)

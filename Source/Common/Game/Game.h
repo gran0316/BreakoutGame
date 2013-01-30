@@ -24,7 +24,7 @@ public:
   //Screen name, must be implemented, it's a pure
   //virtual method in the Screen class
   const char* getName();
-  
+    
   //Screen event method, inherited from the screen class
   void screenWillAppear();
 

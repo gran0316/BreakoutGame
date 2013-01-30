@@ -15,3 +15,8 @@ const float GAME_PADDLE_WIDTH_PERCENTAGE = 0.2f;
 const float GAME_PADDLE_HEIGHT_PERCENTAGE = 0.025f;
 const float GAME_PADDLE_Y_PERCENTAGE = 0.9f;
 const char* GAME_PADDLE_TYPE = "Paddle";
+
+//Brick Constants
+const float GAME_BRICK_WIDTH_PERCENTAGE = 0.2f;
+const float GAME_BRICK_HEIGHT_PERCENTAGE = 0.025f;
+const char* GAME_BRICK_TYPE = "Brick";
