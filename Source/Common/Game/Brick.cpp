@@ -12,9 +12,10 @@
 #include "../OpenGL/OpenGL.h"
 
 
-Brick::Brick() : GameObject()
+Brick::Brick(int x, int y) : GameObject()
 {
-
+    m_InitialXPosition = x;
+    m_InitialYPosition = y;
 }
 
 Brick::~Brick()
@@ -49,8 +50,8 @@ void Brick::reset()
     setHeight(30.0f);
     
     //Reset the x and y position
-    setX(0);
-    setY(0);
+    setX(m_InitialXPosition);
+    setY(m_InitialYPosition);
     
     //Reset the Brick to active
     setIsActive(true);

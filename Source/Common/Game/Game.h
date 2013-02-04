@@ -5,6 +5,8 @@
 #include "../Screen Manager/Screen.h"
 
 class GameObject;
+class Brick;
+class Ball;
 class OpenGLTexture;
 
 class Game : public Screen, public InputListener
@@ -31,6 +33,24 @@ public:
   //GameObject Methods
   void addGameObject(GameObject* gameObject);
   GameObject* getGameObjectByType(const char* type);
+    
+    void loadBricks();
+    
+    //Game level Methods
+    
+    void loadGameLevel(int level);
+    
+    bool checkGameOver();
+    
+    bool newLevel();
+    
+    void manageBalls();
+    
+    int checkBallCount();
+    
+    void extraBallProc();
+    
+    bool getExtraBall();
 
 private:
   //Mouse Events
@@ -41,9 +61,20 @@ private:
 
   //Vector to hold the GameObjects
   std::vector<GameObject*> m_GameObjects;
+  std::vector<Brick*> m_CurrentBricks;
   
   //Timer variable to delay reseting the game has ended
   double m_GameOverTimer;
+    
+  int m_GameLives;
+    
+  int m_CurrentGameLevel;
+    
+  bool m_AI;
+    
+  bool m_ExtraBalls;
+    
+  Ball* m_CurrentActiveBall;
 };
 
 #endif

@@ -17,7 +17,7 @@
 
 Ball::Ball() : GameObject()
 {
-
+    
 }
 
 Ball::~Ball()
@@ -45,7 +45,11 @@ void Ball::update(double aDelta)
   
     //Get the Game object from ScreenManager, and call gameOver. This will reset the game.
     Game* game = (Game*)ScreenManager::getInstance()->getScreenForName(GAME_SCREEN_NAME);
-    game->gameOver();
+      
+    if (game->checkGameOver() == true)
+    {
+        game->gameOver();
+    }
   }
   
   //Horizontal bounds check
@@ -117,7 +121,7 @@ void Ball::checkCollision(GameObject* aGameObject)
     //Determine if the gameObject is a Brick
     else if(strcmp(aGameObject->getType(), GAME_BRICK_TYPE) == 0)
     {
-        handleBrickCollision((Brick*)aGameObject);
+      handleBrickCollision((Brick*)aGameObject);
     }
   }
 }
@@ -164,6 +168,9 @@ void Ball::handlePaddleCollision(Paddle* aPaddle)
 
 void Ball::handleBrickCollision(Brick * aBrick)
 {
+    
+    Game* game = (Game*)ScreenManager::getInstance()->getScreenForName(GAME_SCREEN_NAME);
+    
     //Calculate the ball's distance from the paddle
     float distanceX = fabsf(getX() - aBrick->getX() - (aBrick->getWidth() / 2.0f));
     float distanceY = fabsf(getY() - aBrick->getY() - (aBrick->getHeight() / 2.0f));
@@ -188,10 +195,15 @@ void Ball::handleBrickCollision(Brick * aBrick)
     //the paddle, set the ball's Y value and y-direction accordingly.
     if(distanceX <= (aBrick->getWidth() / 2.0f))
     {
-        //setY(aBrick->getY() - getRadius());
         setDirectionY(getDirectionY() * -1.0f);
         
         aBrick->setIsActive(false);
+        
+        if(game->getExtraBall() == false
+           && game->checkBallCount() ==1)
+        {
+            game->extraBallProc();
+        }
         
         return;
     }
@@ -201,6 +213,15 @@ void Ball::handleBrickCollision(Brick * aBrick)
     if(distanceY <= (aBrick->getHeight() / 2.0f))
     {
         setDirectionX(getDirectionX() * -1.0f);
+        
+        aBrick->setIsActive(false);
+        
+        if(game->getExtraBall() == false
+           && game->checkBallCount() ==1)
+        {
+            game->extraBallProc();
+        }
+        
         return;
     }
 }

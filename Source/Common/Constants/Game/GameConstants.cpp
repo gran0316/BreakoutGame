@@ -20,3 +20,10 @@ const char* GAME_PADDLE_TYPE = "Paddle";
 const float GAME_BRICK_WIDTH_PERCENTAGE = 0.2f;
 const float GAME_BRICK_HEIGHT_PERCENTAGE = 0.025f;
 const char* GAME_BRICK_TYPE = "Brick";
+
+//Game Level Constants
+const int GAME_LEVEL_ONE = 1;
+const int GAME_LEVEL_TWO = 2;
+const int GAME_LEVEL_THREE = 3;
+const int GAME_LEVEL_FOUR = 4;
+const int GAME_LEVEL_FIVE = 5;

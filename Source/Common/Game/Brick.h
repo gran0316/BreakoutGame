@@ -18,7 +18,7 @@
 class Brick : public GameObject
 {
 public:
-    Brick();
+    Brick(int x, int y);
     ~Brick();
     
     //Implementing the pure virtual lifecycle methods from GameObject
@@ -47,6 +47,9 @@ protected:
     
     float m_PositionX;
     float m_PositionY;
+    
+    float m_InitialXPosition;
+    float m_InitialYPosition;
 };
 
 
