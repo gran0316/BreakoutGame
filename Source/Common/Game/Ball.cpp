@@ -199,8 +199,7 @@ void Ball::handleBrickCollision(Brick * aBrick)
         
         aBrick->setIsActive(false);
         
-        if(game->getExtraBall() == false
-           && game->checkBallCount() ==1)
+        if(game->getExtraBall() == false)
         {
             game->extraBallProc();
         }
@@ -216,8 +215,7 @@ void Ball::handleBrickCollision(Brick * aBrick)
         
         aBrick->setIsActive(false);
         
-        if(game->getExtraBall() == false
-           && game->checkBallCount() ==1)
+        if(game->getExtraBall() == false)
         {
             game->extraBallProc();
         }

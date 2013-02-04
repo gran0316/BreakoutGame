@@ -51,6 +51,10 @@ public:
     void extraBallProc();
     
     bool getExtraBall();
+    
+    void spawnBalls();
+    
+    void purgeBalls();
 
 private:
   //Mouse Events

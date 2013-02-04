@@ -46,7 +46,16 @@ Game::~Game()
   }
   
   //Clear the pointers from the vector
-  m_GameObjects.clear();
+  m_GameObjects.clear();    
+    
+  m_CurrentBricks.clear();
+    
+   if (m_CurrentActiveBall != NULL)
+   {
+       delete m_CurrentActiveBall;
+       m_CurrentActiveBall = NULL;
+   }
+    
 }
 
 void Game::update(double aDelta)
@@ -136,6 +145,8 @@ void Game::paint()
 
 void Game::reset()
 {
+    m_ExtraBalls = false;
+    
   //Cycle through and reset all the game objects
   for(int i = 0; i < m_GameObjects.size(); i++)
   {
@@ -145,9 +156,8 @@ void Game::reset()
   //Reset the game over timer to zero
   m_GameOverTimer = 0.0;
     
-  m_ExtraBalls = false;
     
-  manageBalls();
+  purgeBalls();
     
   //Load the current game level.
   loadGameLevel(m_CurrentGameLevel);
@@ -441,26 +451,6 @@ bool Game::newLevel()
 
 void Game::manageBalls()
 {
-    if(m_ExtraBalls)
-    {
-        if(checkBallCount() == 1)
-        {
-            for (int i = 0; i < m_GameObjects.size(); i++)
-            {
-                if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE &&
-                    m_GameObjects.at(i)->getIsActive() == false)
-                {
-                    m_GameObjects.at(i)->setIsActive(m_ExtraBalls);
-                    Ball* ball= (Ball*)m_GameObjects.at(i);
-                    
-                    ball->setSpeed(m_CurrentActiveBall->getSpeed());
-                    ball->setY(m_CurrentActiveBall->getY());
-                    ball->setX(m_CurrentActiveBall->getX());
-                }
-            }
-        }
-    }
-        
     for (int i = 0; i < m_GameObjects.size(); i++)
     {
         if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE &&
@@ -468,6 +458,11 @@ void Game::manageBalls()
         {
             m_CurrentActiveBall = (Ball*)m_GameObjects.at(i);
         }
+    }
+    
+    if(checkBallCount() == 1)
+    {
+        m_ExtraBalls = true;
     }
 }
 
@@ -505,20 +500,63 @@ bool Game::checkGameOver()
 
 void Game::extraBallProc()
 {
-    int randomRoll = rand() % 4;
+    int randomRoll = rand() % 10;
     
-    if(randomRoll == 1)
+    if(checkBallCount() == 1)
     {
-        m_ExtraBalls = true;
+    
+        if(randomRoll == 5)
+        {
+            spawnBalls();
+        }
+    }
+}
+
+void Game::spawnBalls()
+{
+    m_ExtraBalls = true;
+    
+    for (int i = 0; i < m_GameObjects.size(); i++)
+    {
+        if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE &&
+            m_GameObjects.at(i)->getIsActive() == false)
+        {
+            m_GameObjects.at(i)->setIsActive(m_ExtraBalls);
+            Ball* ball= (Ball*)m_GameObjects.at(i);
+            
+            ball->setSpeed(m_CurrentActiveBall->getSpeed());
+            ball->setY(m_CurrentActiveBall->getY());
+            ball->setX(m_CurrentActiveBall->getX());
+        }
     }
     
-    else
-        m_ExtraBalls = false;
 }
 
 bool Game::getExtraBall()
 {
     return m_ExtraBalls;
+}
+
+void Game::purgeBalls()
+{
+    int i = 0;
+    
+    while(checkBallCount() > 1)
+    {
+        if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE)
+        {
+            m_GameObjects.at(i)->setIsActive(false);
+        }
+    }
+    
+    for (int i = 0; i < m_GameObjects.size(); i++)
+    {
+        if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE
+            && m_GameObjects.at(i)->getIsActive() == true)
+        {
+            m_CurrentActiveBall = (Ball*)m_GameObjects.at(i);
+        }
+    }
 }
 
 void Game::mouseMovementEvent(float aDeltaX, float aDeltaY, float aPositionX, float aPositionY)
@@ -549,5 +587,18 @@ void Game::keyUpEvent(int aKeyCode)
         else
             m_AI = true;
     }
+    
+    if(aKeyCode == KEYCODE_SPACE)
+    {
+        m_CurrentGameLevel++;
+        
+        if (m_CurrentGameLevel > GAME_LEVEL_FIVE)
+        {
+            m_CurrentGameLevel = GAME_LEVEL_ONE;
+        }
+        
+        reset();
+    }
 }
+
 
