@@ -54,8 +54,6 @@ public:
     
     void spawnBalls();
     
-    void purgeBalls();
-
 private:
   //Mouse Events
   void mouseMovementEvent(float deltaX, float deltaY, float positionX, float positionY);
@@ -79,6 +77,14 @@ private:
   bool m_ExtraBalls;
     
   Ball* m_CurrentActiveBall;
+    
+  OpenGLTexture* m_Background;
+    
+  OpenGLTexture * m_Ball;
+    
+    OpenGLTexture * m_Brick;
+    
+    OpenGLTexture * m_Paddle;
 };
 
 #endif

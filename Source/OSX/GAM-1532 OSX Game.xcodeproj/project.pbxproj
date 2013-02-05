@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		27773FEE16AF3DC60037AEEE /* GameOverMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27773FEC16AF3DC60037AEEE /* GameOverMenu.cpp */; };
 		27773FFA16AF3F330037AEEE /* Brick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 27773FF816AF3F330037AEEE /* Brick.cpp */; };
+		657E434616C0DD600035FC53 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 657E434516C0DD600035FC53 /* background.png */; };
+		657E434E16C0E8290035FC53 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 657E434D16C0E8290035FC53 /* ball.png */; };
+		657E435216C0EF5B0035FC53 /* brick.png in Resources */ = {isa = PBXBuildFile; fileRef = 657E435116C0EF5B0035FC53 /* brick.png */; };
+		657E435416C0F08D0035FC53 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 657E435316C0F08D0035FC53 /* background.png */; };
+		657E435616C0F30A0035FC53 /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 657E435516C0F30A0035FC53 /* paddle.png */; };
 		6904B34B16A88BCF003072F7 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6904B34716A88BCF003072F7 /* Menu.cpp */; };
 		6904B34C16A88BCF003072F7 /* PauseMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6904B34916A88BCF003072F7 /* PauseMenu.cpp */; };
 		6904B35416A88BE2003072F7 /* MenuConstants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6904B34F16A88BE2003072F7 /* MenuConstants.cpp */; };
@@ -84,6 +89,11 @@
 		27773FED16AF3DC60037AEEE /* GameOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverMenu.h; sourceTree = "<group>"; };
 		27773FF816AF3F330037AEEE /* Brick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Brick.cpp; sourceTree = "<group>"; };
 		27773FF916AF3F330037AEEE /* Brick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Brick.h; sourceTree = "<group>"; };
+		657E434516C0DD600035FC53 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		657E434D16C0E8290035FC53 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		657E435116C0EF5B0035FC53 /* brick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brick.png; sourceTree = "<group>"; };
+		657E435316C0F08D0035FC53 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		657E435516C0F30A0035FC53 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
 		6904B34716A88BCF003072F7 /* Menu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Menu.cpp; sourceTree = "<group>"; };
 		6904B34816A88BCF003072F7 /* Menu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Menu.h; sourceTree = "<group>"; };
 		6904B34916A88BCF003072F7 /* PauseMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseMenu.cpp; sourceTree = "<group>"; };
@@ -533,6 +543,11 @@
 		69BB41571699C22000B970A9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				657E435516C0F30A0035FC53 /* paddle.png */,
+				657E435316C0F08D0035FC53 /* background.png */,
+				657E435116C0EF5B0035FC53 /* brick.png */,
+				657E434D16C0E8290035FC53 /* ball.png */,
+				657E434516C0DD600035FC53 /* background.png */,
 				6904B35616A88BFB003072F7 /* GameOverTitle.png */,
 				6904B35716A88BFB003072F7 /* MenuPlayAgainOption.png */,
 				6904B35816A88BFB003072F7 /* MenuQuitOption.png */,
@@ -619,6 +634,11 @@
 				6904B36116A88BFB003072F7 /* MenuResumeOption.png in Resources */,
 				6904B36216A88BFB003072F7 /* MenuSelectionBox.png in Resources */,
 				6904B36316A88BFB003072F7 /* PausedTitle.png in Resources */,
+				657E434616C0DD600035FC53 /* background.png in Resources */,
+				657E434E16C0E8290035FC53 /* ball.png in Resources */,
+				657E435216C0EF5B0035FC53 /* brick.png in Resources */,
+				657E435416C0F08D0035FC53 /* background.png in Resources */,
+				657E435616C0F30A0035FC53 /* paddle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

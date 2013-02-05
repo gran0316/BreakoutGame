@@ -11,6 +11,11 @@
 
 Game::Game()
 {
+   m_Background = new OpenGLTexture("background");
+   m_Ball = new OpenGLTexture("ball");
+   m_Brick = new OpenGLTexture("brick");
+   m_Paddle = new OpenGLTexture("paddle");
+    
   //Create a new paddle and ball
   addGameObject(new Paddle());
   addGameObject(new Ball());
@@ -50,12 +55,29 @@ Game::~Game()
     
   m_CurrentBricks.clear();
     
-   if (m_CurrentActiveBall != NULL)
-   {
-       delete m_CurrentActiveBall;
-       m_CurrentActiveBall = NULL;
-   }
+    if (m_Background != NULL)
+    {
+        m_Background = NULL;
+        delete m_Background;
+    }
     
+    if (m_Ball != NULL)
+    {
+        m_Ball = NULL;
+        delete m_Ball;
+    }
+    
+    if (m_Brick != NULL)
+    {
+        m_Brick = NULL;
+        delete m_Brick;
+    }
+    
+    if (m_Paddle != NULL)
+    {
+        m_Paddle = NULL;
+        delete m_Paddle;
+    }
 }
 
 void Game::update(double aDelta)
@@ -125,13 +147,40 @@ void Game::update(double aDelta)
 
 void Game::paint()
 {
+    OpenGLRenderer::getInstance()->drawTexture(m_Background, 0.0f, 0.0f, getWidth(), getHeight());
+    
   //Cycle through and draw all the game objects
   for(int i = 0; i < m_GameObjects.size(); i++)
   {
     if(m_GameObjects.at(i)->getIsActive() == true)
     {
       m_GameObjects.at(i)->paint();
+        
+        if(m_GameObjects.at(i)->getType() == GAME_BALL_TYPE)
+        {
+            OpenGLRenderer::getInstance()->drawTexture(m_Ball, m_GameObjects.at(i)->getX() - 33.0f, m_GameObjects.at(i)->getY()- 33.0f);
+        }
+        
+        if(m_GameObjects.at(i)->getType() == GAME_BRICK_TYPE)
+        {
+            Brick * brick = (Brick*)m_GameObjects.at(i);
+            OpenGLRenderer::getInstance()->drawTexture(m_Brick, m_GameObjects.at(i)->getX(), m_GameObjects.at(i)->getY(), brick->getWidth(), brick->getHeight());
+        }
+        
+        if(m_GameObjects.at(i)->getType() == GAME_PADDLE_TYPE)
+        {
+            Paddle * paddle = (Paddle*)m_GameObjects.at(i);
+            OpenGLRenderer::getInstance()->drawTexture(m_Paddle, m_GameObjects.at(i)->getX(), m_GameObjects.at(i)->getY(), paddle->getWidth(), paddle->getHeight());
+        }
     }
+      
+      int offset = 0;
+      
+      for (int i = 0; i < m_GameLives; i ++)
+      {
+          OpenGLRenderer::getInstance()->drawTexture(m_Ball, offset, ScreenManager::getInstance()->getCurrentScreen()->getHeight() - 80);
+          offset = offset + 50;
+      }
   }
   
   //Draw the outer white walls
@@ -156,8 +205,7 @@ void Game::reset()
   //Reset the game over timer to zero
   m_GameOverTimer = 0.0;
     
-    
-  purgeBalls();
+    manageBalls();
     
   //Load the current game level.
   loadGameLevel(m_CurrentGameLevel);
@@ -535,28 +583,6 @@ void Game::spawnBalls()
 bool Game::getExtraBall()
 {
     return m_ExtraBalls;
-}
-
-void Game::purgeBalls()
-{
-    int i = 0;
-    
-    while(checkBallCount() > 1)
-    {
-        if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE)
-        {
-            m_GameObjects.at(i)->setIsActive(false);
-        }
-    }
-    
-    for (int i = 0; i < m_GameObjects.size(); i++)
-    {
-        if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE
-            && m_GameObjects.at(i)->getIsActive() == true)
-        {
-            m_CurrentActiveBall = (Ball*)m_GameObjects.at(i);
-        }
-    }
 }
 
 void Game::mouseMovementEvent(float aDeltaX, float aDeltaY, float aPositionX, float aPositionY)
