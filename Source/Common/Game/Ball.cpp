@@ -171,18 +171,18 @@ void Ball::handleBrickCollision(Brick * aBrick)
     
     Game* game = (Game*)ScreenManager::getInstance()->getScreenForName(GAME_SCREEN_NAME);
     
-    //Calculate the ball's distance from the paddle
+    //Calculate the ball's distance from the brick
     float distanceX = fabsf(getX() - aBrick->getX() - (aBrick->getWidth() / 2.0f));
     float distanceY = fabsf(getY() - aBrick->getY() - (aBrick->getHeight() / 2.0f));
     
-    //If the distance on the x-axis is greater than half-the-width of the paddle + the ball's radius, then
+    //If the distance on the x-axis is greater than half-the-width of the brick + the ball's radius, then
     //there is no way they can be colliding and return out of this method, no more collision handling is needed.
     if(distanceX > ((aBrick->getWidth() / 2.0f) + getRadius()))
     {
         return;
     }
     
-    //If the distance on the y-axis is greater than half-the-height of the paddle + the ball's radius, then
+    //If the distance on the y-axis is greater than half-the-height of the brick + the ball's radius, then
     //there is no way they can be colliding and return out of this method, no more collision handling is needed.
     if(distanceY > ((aBrick->getHeight() / 2.0f) + getRadius()))
     {
@@ -191,32 +191,37 @@ void Ball::handleBrickCollision(Brick * aBrick)
     
     //If we got here (passed the previous 2 if checks), then there is a good chance that a collision has occured.
     
-    //If the distance on the x-axis is less than half-the-width of the paddle, then we have a collision on top of
-    //the paddle, set the ball's Y value and y-direction accordingly.
+    //If the distance on the x-axis is less than half-the-width of the brick, then we have a collision on top of
+    //the brick, set the ball's y-direction accordingly.
     if(distanceX <= (aBrick->getWidth() / 2.0f))
     {
         setDirectionY(getDirectionY() * -1.0f);
         
+		//Set the brick to inactive.
         aBrick->setIsActive(false);
         
+		//Check to see if we have extra balls in game currently.
         if(game->getExtraBall() == false)
         {
+			//If none try to proc it.
             game->extraBallProc();
         }
         
         return;
     }
     
-    //If the distance on the y-axis is less than half-the-height of the paddle, then we have a collision on either
-    //side of the paddle, set the x-direction accordingly.
+    //If the distance on the y-axis is less than half-the-height of the brick, then we have a collision on either
+    //side of the brick, set the x-direction accordingly.
     if(distanceY <= (aBrick->getHeight() / 2.0f))
     {
         setDirectionX(getDirectionX() * -1.0f);
         
         aBrick->setIsActive(false);
         
+		//Check to see if we have extra balls in game currently.
         if(game->getExtraBall() == false)
         {
+			//If none try to proc it.
             game->extraBallProc();
         }
         

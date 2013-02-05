@@ -97,6 +97,7 @@
     <ClCompile Include="..\..\Common\Constants\Menu\MenuConstants.cpp" />
     <ClCompile Include="..\..\Common\Constants\Resources\ResourceConstants.cpp" />
     <ClCompile Include="..\..\Common\Game\Ball.cpp" />
+    <ClCompile Include="..\..\Common\Game\Brick.cpp" />
     <ClCompile Include="..\..\Common\Game\Game.cpp" />
     <ClCompile Include="..\..\Common\Game\GameObject.cpp" />
     <ClCompile Include="..\..\Common\Game\Paddle.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="..\..\Common\Constants\Menu\MenuConstants.h" />
     <ClInclude Include="..\..\Common\Constants\Resources\ResourceConstants.h" />
     <ClInclude Include="..\..\Common\Game\Ball.h" />
+    <ClInclude Include="..\..\Common\Game\Brick.h" />
     <ClInclude Include="..\..\Common\Game\Game.h" />
     <ClInclude Include="..\..\Common\Game\GameObject.h" />
     <ClInclude Include="..\..\Common\Game\Paddle.h" />

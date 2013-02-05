@@ -34,25 +34,34 @@ public:
   void addGameObject(GameObject* gameObject);
   GameObject* getGameObjectByType(const char* type);
     
-    void loadBricks();
+  //Load the game bricks on startup so they exist and can be changed.
+  void loadBricks();
     
-    //Game level Methods
+  //Game level Methods
     
-    void loadGameLevel(int level);
+  //Loads the current level of the game.
+  void loadGameLevel(int level);
     
-    bool checkGameOver();
+  //Checks to see if the game is over.
+  bool checkGameOver();
     
-    bool newLevel();
+  //Checks to see if we need a new level.
+  bool newLevel();
     
-    void manageBalls();
+  //Manages the balls on each update to handle active and inactive balls. 
+  void manageBalls();
     
-    int checkBallCount();
-    
-    void extraBallProc();
-    
-    bool getExtraBall();
-    
-    void spawnBalls();
+  //Checks the current in game ball count.
+  int checkBallCount();
+  
+  //Check for an extra ball proc.
+  void extraBallProc();
+  
+  //Returns a bool wether we should proc extra balls or not.
+  bool getExtraBall();
+  
+  //Spawns balls on proc.
+  void spawnBalls();
     
 private:
   //Mouse Events
@@ -63,28 +72,32 @@ private:
 
   //Vector to hold the GameObjects
   std::vector<GameObject*> m_GameObjects;
+  //Vector to manage bricks.
   std::vector<Brick*> m_CurrentBricks;
   
   //Timer variable to delay reseting the game has ended
   double m_GameOverTimer;
     
+  //Current game lives.
   int m_GameLives;
-    
+   
+  //Current game level.
   int m_CurrentGameLevel;
-    
+   
+  //Bool for AI toggle.
   bool m_AI;
     
+  //Bool for extra ball proc.
   bool m_ExtraBalls;
     
+  //Ball point to set speed of balls and is used for AI.
   Ball* m_CurrentActiveBall;
-    
+   
+  //OpenGLTextures for the game. It's Community themed. It returns February 7th. BE EXCITED!
   OpenGLTexture* m_Background;
-    
   OpenGLTexture * m_Ball;
-    
-    OpenGLTexture * m_Brick;
-    
-    OpenGLTexture * m_Paddle;
+  OpenGLTexture * m_Brick;
+  OpenGLTexture * m_Paddle;
 };
 
 #endif
