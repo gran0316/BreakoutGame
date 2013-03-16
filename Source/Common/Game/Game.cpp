@@ -18,10 +18,6 @@ Game::Game()
   //Create a new paddle and ball
   addGameObject(new Paddle());
   addGameObject(new Ball());
-  
-  //Add the extra balls.
-  addGameObject(new Ball());
-  addGameObject(new Ball());
     
   //Initialise the game lives.
   m_GameLives = 3;
@@ -31,9 +27,6 @@ Game::Game()
     
   //Initialise AI to false.
   m_AI = false;
-    
-  //Set the bool for extra bricks to false.
-  m_ExtraBalls = false;
 
   //Set the current game level to the first game level.
   m_CurrentGameLevel = GAME_LEVEL_ONE;
@@ -54,7 +47,7 @@ Game::~Game()
   //Clear the pointers from the vector
   m_GameObjects.clear();    
   
-  //Clear the points from the current brick vector.
+  //Clear the pointerss from the current brick vector.
   m_CurrentBricks.clear();
     
   //Clear all the OpenGLTextures.
@@ -502,45 +495,6 @@ bool Game::newLevel()
     return true;
 }
 
-void Game::manageBalls()
-{
-    for (int i = 0; i < m_GameObjects.size(); i++)
-    {
-        if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE &&
-            m_GameObjects.at(i)->getIsActive() == true)
-        {
-			//If the ball at this position is active, set it to the current ball
-			//so a th current ball always has a value for AI and setting speeds.
-            m_CurrentActiveBall = (Ball*)m_GameObjects.at(i);
-        }
-    }
-    
-	//If theres only one ball left in game, allow for pocs.
-    if(checkBallCount() == 1)
-    {
-        m_ExtraBalls = true;
-    }
-}
-
-int Game::checkBallCount()
-{
-	//This value will be returned.
-    int currentBallCount = 0;
-    
-    for (int i = 0; i < m_GameObjects.size(); i++)
-    {
-		//If the object is active and it's a ball.
-        if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE
-            && m_GameObjects.at(i)->getIsActive() == true)
-        {
-			//If a ball is found increment the ball count.
-            currentBallCount++;
-        }
-    }
-
-    return currentBallCount;
-}
-
 bool Game::checkGameOver()
 {
 	//If there's no ball it's a level over. Player loses a life and reset is called.
@@ -557,49 +511,6 @@ bool Game::checkGameOver()
     }
     
     return false;
-}
-
-void Game::extraBallProc()
-{
-	//Roll a random number.
-    int randomRoll = rand() % 10;
-    
-	//If there's only one ball in the game and the random roll is 5, spawn the balls.
-    if(checkBallCount() == 1)
-    {
-        if(randomRoll == 5)
-        {
-            spawnBalls();
-        }
-    }
-}
-
-void Game::spawnBalls()
-{
-	//Set this to true on entry, there is extra balls in the game.
-    m_ExtraBalls = true;
-    
-    for (int i = 0; i < m_GameObjects.size(); i++)
-    {
-		//Find the inactive balls.
-        if (m_GameObjects.at(i)->getType() == GAME_BALL_TYPE &&
-            m_GameObjects.at(i)->getIsActive() == false)
-        {
-			//Set the ball to active and spawn them at the current balls location, with the current balls speed.
-            m_GameObjects.at(i)->setIsActive(m_ExtraBalls);
-            Ball* ball= (Ball*)m_GameObjects.at(i);
-            
-            ball->setSpeed(m_CurrentActiveBall->getSpeed());
-            ball->setY(m_CurrentActiveBall->getY());
-            ball->setX(m_CurrentActiveBall->getX());
-        }
-    }
-    
-}
-
-bool Game::getExtraBall()
-{
-    return m_ExtraBalls;
 }
 
 void Game::mouseMovementEvent(float aDeltaX, float aDeltaY, float aPositionX, float aPositionY)
