@@ -16,11 +16,16 @@ Brick::Brick(int x, int y) : GameObject()
 {
     m_InitialXPosition = x;
     m_InitialYPosition = y;
+    m_Brick = new OpenGLTexture("brick");
 }
 
 Brick::~Brick()
 {
-    
+    if(m_Brick != NULL)
+    {
+        delete m_Brick;
+        m_Brick = NULL;
+    }
 }
 
 void Brick::update(double aDelta)
@@ -30,13 +35,8 @@ void Brick::update(double aDelta)
 
 void Brick::paint()
 {
-    //Draw the Red Brick with a white outline
-    OpenGLRenderer::getInstance()->setLineWidth(2.0f);
-    OpenGLRenderer::getInstance()->setForegroundColor(OpenGLColorBlack());
-    OpenGLRenderer::getInstance()->drawRectangle(getX(), getY(), getWidth(), getHeight());
-    OpenGLRenderer::getInstance()->setForegroundColor(OpenGLColorWhite());
-    OpenGLRenderer::getInstance()->drawRectangle(getX(), getY(), getWidth(), getHeight(), false);
-    OpenGLRenderer::getInstance()->setLineWidth(1.0f);
+    //Draw the brick. 
+    OpenGLRenderer::getInstance()->drawTexture(m_Brick, getX(), getY(), getWidth(), getHeight());
 }
 
 void Brick::reset()

@@ -14,12 +14,16 @@
 
 Paddle::Paddle() : GameObject()
 {
-
+  m_Paddle = new OpenGLTexture("paddle");
 }
 
 Paddle::~Paddle()
 {
-
+  if (m_Paddle != NULL)
+  {
+      m_Paddle = NULL;
+      delete m_Paddle;
+  }
 }
 
 void Paddle::update(double aDelta)
@@ -29,13 +33,8 @@ void Paddle::update(double aDelta)
 
 void Paddle::paint()
 {
-  //Draw the Red paddle with a white outline
-  OpenGLRenderer::getInstance()->setLineWidth(2.0f);
-  OpenGLRenderer::getInstance()->setForegroundColor(OpenGLColorRed());
-  OpenGLRenderer::getInstance()->drawRectangle(getX(), getY(), getWidth(), getHeight());
-  OpenGLRenderer::getInstance()->setForegroundColor(OpenGLColorWhite());
-  OpenGLRenderer::getInstance()->drawRectangle(getX(), getY(), getWidth(), getHeight(), false);
-  OpenGLRenderer::getInstance()->setLineWidth(1.0f);
+  //Draw the brick.
+  OpenGLRenderer::getInstance()->drawTexture(m_Paddle, getX(), getY(), getWidth(), getHeight());
 }
 
 void Paddle::reset()

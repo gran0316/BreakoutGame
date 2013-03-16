@@ -94,10 +94,8 @@ private:
   Ball* m_CurrentActiveBall;
    
   //OpenGLTextures for the game. It's Community themed. It returns February 7th. BE EXCITED!
-  OpenGLTexture* m_Background;
-  OpenGLTexture * m_Ball;
-  OpenGLTexture * m_Brick;
-  OpenGLTexture * m_Paddle;
+  OpenGLTexture * m_Background;
+  OpenGLTexture * m_Lives;
 };
 
 #endif

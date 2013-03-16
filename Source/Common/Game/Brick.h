@@ -13,6 +13,7 @@
 
 #include "GameObject.h"
 
+class OpenGLTexture;
 
 //Paddle class, inherits from GameObject
 class Brick : public GameObject
@@ -50,6 +51,8 @@ protected:
     
     float m_InitialXPosition;
     float m_InitialYPosition;
+    
+    OpenGLTexture * m_Brick;
 };
 
 

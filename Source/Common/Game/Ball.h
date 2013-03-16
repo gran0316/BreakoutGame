@@ -13,6 +13,7 @@
 
 class Paddle;
 class Brick;
+class OpenGLTexture;
 
 
 //Ball class, inherits from the GameObject class, handles 
@@ -65,6 +66,8 @@ protected:
   float m_Speed;
   float m_DirectionX;
   float m_DirectionY;
+    
+  OpenGLTexture * m_Ball;
 };
 
 #endif

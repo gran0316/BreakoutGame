@@ -11,6 +11,8 @@
 
 #include "GameObject.h"
 
+class OpenGLTexture;
+
 //Paddle class, inherits from GameObject, is controlled by the
 //mouse input on the x-axis.
 class Paddle : public GameObject
@@ -42,6 +44,8 @@ public:
 protected:
   float m_Width;
   float m_Height;
+    
+  OpenGLTexture * m_Paddle;
 };
 
 #endif

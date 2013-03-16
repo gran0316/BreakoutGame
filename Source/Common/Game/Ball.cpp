@@ -17,12 +17,16 @@
 
 Ball::Ball() : GameObject()
 {
-    
+    m_Ball = new OpenGLTexture("ball");
 }
 
 Ball::~Ball()
 {
-
+    if (m_Ball != NULL)
+    {
+        m_Ball = NULL;
+        delete m_Ball;
+    }
 }
 
 void Ball::update(double aDelta)
@@ -69,13 +73,8 @@ void Ball::update(double aDelta)
 
 void Ball::paint()
 {
-  //Draw an orange ball with a white outline
-  OpenGLRenderer::getInstance()->setLineWidth(2.0f);
-  OpenGLRenderer::getInstance()->setForegroundColor(OpenGLColorOrange());
-  OpenGLRenderer::getInstance()->drawCircle(getX(), getY(), getRadius());
-  OpenGLRenderer::getInstance()->setForegroundColor(OpenGLColorWhite());
-  OpenGLRenderer::getInstance()->drawCircle(getX(), getY(), getRadius(), 36, false);
-  OpenGLRenderer::getInstance()->setLineWidth(1.0f);
+    //Draw the ball. 
+  OpenGLRenderer::getInstance()->drawTexture(m_Ball, getX() - 33.0f, getY()- 33.0f);
 }
 
 void Ball::reset()

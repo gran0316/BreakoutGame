@@ -13,9 +13,7 @@ Game::Game()
 {
   //Create the textures.
   m_Background = new OpenGLTexture("background");
-  m_Ball = new OpenGLTexture("ball");
-  m_Brick = new OpenGLTexture("brick");
-  m_Paddle = new OpenGLTexture("paddle");
+  m_Lives = new OpenGLTexture("ball");
     
   //Create a new paddle and ball
   addGameObject(new Paddle());
@@ -65,23 +63,10 @@ Game::~Game()
       m_Background = NULL;
       delete m_Background;
   }
-    
-  if (m_Ball != NULL)
+  if (m_Lives != NULL)
   {
-      m_Ball = NULL;
-      delete m_Ball;
-  }
-    
-  if (m_Brick != NULL)
-  {
-      m_Brick = NULL;
-      delete m_Brick;
-  }
-    
-  if (m_Paddle != NULL)
-  {
-      m_Paddle = NULL;
-      delete m_Paddle;
+      m_Lives = NULL;
+      delete m_Lives;
   }
 }
 
@@ -169,24 +154,6 @@ void Game::paint()
     if(m_GameObjects.at(i)->getIsActive() == true)
     {
       m_GameObjects.at(i)->paint();
-        
-	    //If the game object is a ball, paint the ball texture at it's location.
-        if(m_GameObjects.at(i)->getType() == GAME_BALL_TYPE)
-        {
-            OpenGLRenderer::getInstance()->drawTexture(m_Ball, m_GameObjects.at(i)->getX() - 33.0f, m_GameObjects.at(i)->getY()- 33.0f);
-        }
-        //If the game object is a brick, paint the brick texture at it's location.
-        if(m_GameObjects.at(i)->getType() == GAME_BRICK_TYPE)
-        {
-            Brick * brick = (Brick*)m_GameObjects.at(i);
-            OpenGLRenderer::getInstance()->drawTexture(m_Brick, m_GameObjects.at(i)->getX(), m_GameObjects.at(i)->getY(), brick->getWidth(), brick->getHeight());
-        }
-        //If the game object is a paddle, paint the paddle texture at it's location.
-        if(m_GameObjects.at(i)->getType() == GAME_PADDLE_TYPE)
-        {
-            Paddle * paddle = (Paddle*)m_GameObjects.at(i);
-            OpenGLRenderer::getInstance()->drawTexture(m_Paddle, m_GameObjects.at(i)->getX(), m_GameObjects.at(i)->getY(), paddle->getWidth(), paddle->getHeight());
-        }
     }
       //Offset for paint the game lives.
       int offset = 0;
@@ -195,7 +162,7 @@ void Game::paint()
       for (int i = 0; i < m_GameLives; i ++)
       {
 		  //Paint the life.
-          OpenGLRenderer::getInstance()->drawTexture(m_Ball, offset, ScreenManager::getInstance()->getCurrentScreen()->getHeight() - 60);
+          OpenGLRenderer::getInstance()->drawTexture(m_Lives, offset, ScreenManager::getInstance()->getCurrentScreen()->getHeight() - 60);
 		  //Increment paint location.
           offset = offset + 50;
       }
@@ -212,7 +179,7 @@ void Game::paint()
 
 void Game::reset()
 {
-	//Set active balls to false.
+   //Set active balls to false.
    m_ExtraBalls = false;
     
   //Cycle through and reset all the game objects
