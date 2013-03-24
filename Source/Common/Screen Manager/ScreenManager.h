@@ -40,7 +40,7 @@ private:
   
   float m_ScreenWidth;
   float m_ScreenHeight;
-	bool m_ScreensLoaded;
+  bool m_ScreensLoaded;
 };
 
 #endif

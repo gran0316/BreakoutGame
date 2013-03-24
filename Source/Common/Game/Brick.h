@@ -19,7 +19,7 @@ class OpenGLTexture;
 class Brick : public GameObject
 {
 public:
-    Brick(int x, int y);
+    Brick(int x, int y, int tag);
     ~Brick();
     
     //Implementing the pure virtual lifecycle methods from GameObject
@@ -41,6 +41,7 @@ public:
     void getSize(float &width, float &height);
     float getWidth();
     float getHeight();
+    int getTag();
     
 protected:
     float m_Width;
@@ -51,6 +52,8 @@ protected:
     
     float m_InitialXPosition;
     float m_InitialYPosition;
+    
+    int m_LevelTag;
     
     OpenGLTexture * m_Brick;
 };

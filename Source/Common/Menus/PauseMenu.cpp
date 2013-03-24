@@ -6,10 +6,14 @@ PauseMenu::PauseMenu() : Menu()
 {
   //Add the menu title
   addMenuTitle(new OpenGLTexture(PAUSE_MENU_TITLE));
+  
+  //Add the menu's background image.
+  addMenuBackground(new OpenGLTexture(GAME_BACKGROUND_TEXTURE));
 
   //Add the menu options
   addMenuOption(new OpenGLTexture(MENU_OPTION_RESUME));
-  addMenuOption(new OpenGLTexture(MENU_OPTION_RESTART));
+  addMenuOption(new OpenGLTexture(MENU_OPTION_RESTART_LEVEL));
+  addMenuOption(new OpenGLTexture(MENU_OPTION_RESTART_GAME));
   addMenuOption(new OpenGLTexture(MENU_OPTION_QUIT));
 }
 
@@ -25,6 +29,9 @@ const char* PauseMenu::getName()
 
 void PauseMenu::menuAction(int aIndex)
 {
+    //Get the game from the ScreenManager
+    Game* game = (Game*)ScreenManager::getInstance()->getScreenForName(GAME_SCREEN_NAME);
+    
   if(aIndex == 0)
   {
     //Switch back to the Game screen
@@ -32,10 +39,7 @@ void PauseMenu::menuAction(int aIndex)
   }
   else if(aIndex == 1)
   {
-    //Get the game from the ScreenManager
-    Game* game = (Game*)ScreenManager::getInstance()->getScreenForName(GAME_SCREEN_NAME);
-
-    //Reset the game
+    //Reset the level.
     game->reset();
 
     //Switch to the game
@@ -43,7 +47,15 @@ void PauseMenu::menuAction(int aIndex)
   }
   else if(aIndex == 2)
   {
+    //Restart the game.
+    game->restartGame();
+      
+    //Switch to the game
+    ScreenManager::getInstance()->switchScreen(game);
+  }
+  else if(aIndex == 3)
+  {
     //Exit the game
-    exit(0);
+    ScreenManager::getInstance()->switchScreen(MAIN_MENU_NAME);
   }
 }

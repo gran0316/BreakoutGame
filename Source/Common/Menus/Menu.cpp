@@ -4,6 +4,7 @@
 Menu::Menu() : Screen()
 {
   m_MenuTitle = NULL;
+  m_MenuBackground = NULL;
   m_MenuSelectionBox = new OpenGLTexture(MENU_SELECTION_BOX);
   m_SelectedIndex = -1;
 }
@@ -16,6 +17,13 @@ Menu::~Menu()
     delete m_MenuTitle;
     m_MenuTitle = NULL;
   }
+    
+  //Delete the menu background texture.
+  if(m_MenuBackground != NULL)
+  {
+    delete m_MenuBackground;
+    m_MenuBackground = NULL;
+   }
 
   //Delete the selection box texture
   if(m_MenuSelectionBox != NULL)
@@ -42,10 +50,13 @@ void Menu::update(double delta)
 
 void Menu::paint()
 {
+  //Draw the menu background
+   OpenGLRenderer::getInstance()->drawTexture(m_MenuBackground, 0.0f, 0.0f, getWidth(), getHeight());
+    
   //Draw the menu title
   int x = (getWidth() - m_MenuTitle->getSourceWidth()) * MENU_TITLE_X_PERCENTAGE;
   int y = (getHeight() - m_MenuTitle->getSourceHeight()) * MENU_TITLE_Y_PERCENTAGE;
-  OpenGLRenderer::getInstance()->drawTexture(m_MenuTitle, (float)x, (float)y);
+    OpenGLRenderer::getInstance()->drawTexture(m_MenuTitle, (float)x, (float)y);
 
   //Draw the menu options
   y = getHeight() * MENU_OPTIONS_STARTING_Y_PERCENTAGE;
@@ -127,6 +138,14 @@ void Menu::addMenuTitle(OpenGLTexture* aMenuTitle)
   {
     m_MenuTitle = aMenuTitle;
   }
+}
+
+void Menu::addMenuBackground(OpenGLTexture* aBackground)
+{
+    if(aBackground != NULL)
+    {
+        m_MenuBackground = aBackground;
+    }
 }
 
 void Menu::addMenuOption(OpenGLTexture* aMenuOption)

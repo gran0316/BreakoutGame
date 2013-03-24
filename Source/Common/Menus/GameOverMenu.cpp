@@ -4,7 +4,7 @@
 GameOverMenu::GameOverMenu()
 {
 	addMenuTitle(new OpenGLTexture(GAME_OVER_MENU_TITLE));
-
+    addMenuBackground(new OpenGLTexture(GAME_BACKGROUND_TEXTURE));
 	addMenuOption(new OpenGLTexture(MENU_OPTION_PLAY_AGAIN));
 	addMenuOption(new OpenGLTexture(MENU_OPTION_QUIT));
 }

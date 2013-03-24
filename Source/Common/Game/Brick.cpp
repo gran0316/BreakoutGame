@@ -12,11 +12,12 @@
 #include "../OpenGL/OpenGL.h"
 
 
-Brick::Brick(int x, int y) : GameObject()
+Brick::Brick(int x, int y, int tag) : GameObject()
 {
     m_InitialXPosition = x;
     m_InitialYPosition = y;
-    m_Brick = new OpenGLTexture("brick");
+    m_LevelTag = tag;
+    m_Brick = new OpenGLTexture(GAME_BRICK_TEXTURE);
 }
 
 Brick::~Brick()
@@ -40,14 +41,10 @@ void Brick::paint()
 }
 
 void Brick::reset()
-{
-    //Get the screen width and height
-    float screenWidth = ScreenManager::getInstance()->getScreenWidth();
-    float screenHeight = ScreenManager::getInstance()->getScreenHeight();
-    
+{    
     //Reset the Brick's width and height
-    setWidth(80.0f);
-    setHeight(30.0f);
+    setWidth(GAME_BRICK_WIDTH);
+    setHeight(GAME_BRICK_HEIGHT);
     
     //Reset the x and y position
     setX(m_InitialXPosition);
@@ -92,4 +89,9 @@ float Brick::getWidth()
 float Brick::getHeight()
 {
     return m_Height;
+}
+
+int Brick::getTag()
+{
+    return m_LevelTag;
 }

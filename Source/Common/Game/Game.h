@@ -7,6 +7,7 @@
 class GameObject;
 class Brick;
 class Ball;
+class Paddle;
 class OpenGLTexture;
 
 class Game : public Screen, public InputListener
@@ -20,8 +21,8 @@ public:
   void paint();
   void reset();
   
-  //Game Over method, call this when to end the game
-  void gameOver();
+  //Method to check whether or not we need to call a game over.
+  void checkGameOver();
 
   //Screen name, must be implemented, it's a pure
   //virtual method in the Screen class
@@ -40,28 +41,16 @@ public:
   //Game level Methods
     
   //Loads the current level of the game.
-  void loadGameLevel(int level);
-    
-  //Checks to see if the game is over.
-  bool checkGameOver();
+  void loadGameLevel();
+  void setBallAndPaddle();
     
   //Checks to see if we need a new level.
   bool newLevel();
+  void restartGame();
     
-  //Manages the balls on each update to handle active and inactive balls. 
-  void manageBalls();
+  void toggleControl();
     
-  //Checks the current in game ball count.
-  int checkBallCount();
-  
-  //Check for an extra ball proc.
-  void extraBallProc();
-  
-  //Returns a bool wether we should proc extra balls or not.
-  bool getExtraBall();
-  
-  //Spawns balls on proc.
-  void spawnBalls();
+  void setLevel(int level);
     
 private:
   //Mouse Events
@@ -69,29 +58,30 @@ private:
 
   //Key Events
   void keyUpEvent(int keyCode);
+  void keyDownEvent(int keyCode);
 
   //Vector to hold the GameObjects
   std::vector<GameObject*> m_GameObjects;
-  //Vector to manage bricks.
-  std::vector<Brick*> m_CurrentBricks;
-  
+
   //Timer variable to delay reseting the game has ended
   double m_GameOverTimer;
     
   //Current game lives.
-  int m_GameLives;
+  short m_GameLives;
    
   //Current game level.
-  int m_CurrentGameLevel;
+  short m_CurrentGameLevel;
    
   //Bool for AI toggle.
   bool m_AI;
     
-  //Bool for extra ball proc.
-  bool m_ExtraBalls;
+    //Bool for control toggle.
+    bool m_KeyboardEnabled;
+    bool m_MouseEnabled;
     
   //Ball point to set speed of balls and is used for AI.
-  Ball* m_CurrentActiveBall;
+  Ball* m_ActiveBall;
+  Paddle* m_Paddle;
    
   //OpenGLTextures for the game. It's Community themed. It returns February 7th. BE EXCITED!
   OpenGLTexture * m_Background;

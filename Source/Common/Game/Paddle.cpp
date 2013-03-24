@@ -14,7 +14,9 @@
 
 Paddle::Paddle() : GameObject()
 {
-  m_Paddle = new OpenGLTexture("paddle");
+  m_Paddle = new OpenGLTexture(GAME_PADDLE_TEXTURE);
+  float screenWidth = ScreenManager::getInstance()->getScreenWidth();
+  setWidth(screenWidth * GAME_PADDLE_WIDTH_PERCENTAGE);
 }
 
 Paddle::~Paddle()
@@ -44,7 +46,7 @@ void Paddle::reset()
   float screenHeight = ScreenManager::getInstance()->getScreenHeight();
 
   //Reset the paddle's width and height
-  setWidth(screenWidth * GAME_PADDLE_WIDTH_PERCENTAGE);
+  setWidth(getWidth());
   setHeight(screenHeight * GAME_PADDLE_HEIGHT_PERCENTAGE);
   
   //Reset the x and y position

@@ -3,6 +3,14 @@
 #include "../Game/Game.h"
 #include "../Menus/PauseMenu.h"
 #include "../Menus/GameOverMenu.h"
+#include "../Menus/SplashScreen.h"
+#include "../Menus/MainMenu.h"
+#include "../Menus/OptionsMenu.h"
+#include "../Menus/CreditsMenu.h"
+#include "../Menus/WinMenu.h"
+#include "../Menus/LevelSelectMenu.h"
+#include "../Menus/CreditsMenu.h"
+
 #include <time.h>
 
 ScreenManager* ScreenManager::m_Instance = NULL;
@@ -48,9 +56,16 @@ ScreenManager::~ScreenManager()
 void ScreenManager::loadScreens()
 {
 	//Create the Game and add it
+    addScreen(new SplashScreen());
 	addScreen(new Game());
 	addScreen(new PauseMenu());
 	addScreen(new GameOverMenu());
+    addScreen(new MainMenu());
+    addScreen(new OptionsMenu());
+    addScreen(new CreditsMenu());
+    addScreen(new WinMenu());
+    addScreen(new LevelSelectMenu());
+    addScreen(new CreditsMenu());
 }
 
 void ScreenManager::setScreenSize(float aWidth, float aHeight)

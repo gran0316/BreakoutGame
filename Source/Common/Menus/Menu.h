@@ -32,21 +32,26 @@ public:
 
   //Conveniance methods to add the menu title and menu options.
   void addMenuTitle(OpenGLTexture* menuTitle);
+  void addMenuBackground(OpenGLTexture* menuBackground);
   void addMenuOption(OpenGLTexture* menuOption);
 
   //Conveniance method to get the selected menu option index.
   int getSelectedIndex();
+    
+  //Scroll value for the background credits texture.
+  int m_ScrollValue;
 
 protected:
   //This method must be implemented in inheriting classes, it is called when a 
   //menu option is selected, the selected menu options index is passed as a parameter
   virtual void menuAction(int index) = 0;
-
+  std::vector <OpenGLTexture*>m_MenuOptions;
+    
 private:
   //Private member variables, they are private so inheriting classes don't misuse them.
   OpenGLTexture* m_MenuTitle;
   OpenGLTexture* m_MenuSelectionBox;
-  std::vector <OpenGLTexture*>m_MenuOptions;
+  OpenGLTexture* m_MenuBackground;
   int m_SelectedIndex;
 };
 

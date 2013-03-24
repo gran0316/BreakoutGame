@@ -17,7 +17,7 @@
 
 Ball::Ball() : GameObject()
 {
-    m_Ball = new OpenGLTexture("ball");
+    m_Ball = new OpenGLTexture(GAME_BALL_TEXTURE);
 }
 
 Ball::~Ball()
@@ -49,11 +49,9 @@ void Ball::update(double aDelta)
   
     //Get the Game object from ScreenManager, and call gameOver. This will reset the game.
     Game* game = (Game*)ScreenManager::getInstance()->getScreenForName(GAME_SCREEN_NAME);
-      
-    if (game->checkGameOver() == true)
-    {
-        game->gameOver();
-    }
+    
+    game->checkGameOver();
+    
   }
   
   //Horizontal bounds check
@@ -91,7 +89,7 @@ void Ball::reset()
   setY((screenHeight - getRadius()) / 2.0f);
   
   //Reset the speed
-  setSpeed(GAME_BALL_DEFAULT_SPEED);
+  setSpeed(getSpeed());
   
   //Reset the direction
   setDirectionX(1.0f);
@@ -167,9 +165,6 @@ void Ball::handlePaddleCollision(Paddle* aPaddle)
 
 void Ball::handleBrickCollision(Brick * aBrick)
 {
-    
-    Game* game = (Game*)ScreenManager::getInstance()->getScreenForName(GAME_SCREEN_NAME);
-    
     //Calculate the ball's distance from the brick
     float distanceX = fabsf(getX() - aBrick->getX() - (aBrick->getWidth() / 2.0f));
     float distanceY = fabsf(getY() - aBrick->getY() - (aBrick->getHeight() / 2.0f));
@@ -199,13 +194,6 @@ void Ball::handleBrickCollision(Brick * aBrick)
 		//Set the brick to inactive.
         aBrick->setIsActive(false);
         
-		//Check to see if we have extra balls in game currently.
-        if(game->getExtraBall() == false)
-        {
-			//If none try to proc it.
-            game->extraBallProc();
-        }
-        
         return;
     }
     
@@ -216,13 +204,6 @@ void Ball::handleBrickCollision(Brick * aBrick)
         setDirectionX(getDirectionX() * -1.0f);
         
         aBrick->setIsActive(false);
-        
-		//Check to see if we have extra balls in game currently.
-        if(game->getExtraBall() == false)
-        {
-			//If none try to proc it.
-            game->extraBallProc();
-        }
         
         return;
     }
